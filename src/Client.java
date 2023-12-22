@@ -1,9 +1,8 @@
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.InputStream;
+import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -94,7 +93,7 @@ public class Client {
     /**
      *  main方法持续接收的方法
      */
-    static void downloadActions(Scanner scanner) throws InterruptedException {
+    static void downloadActions(Scanner scanner) throws InterruptedException, IOException {
         String command;
         StatusMonitor:while(true){
             //System.out.println(downloadTasks.size());

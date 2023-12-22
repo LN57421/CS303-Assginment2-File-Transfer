@@ -115,6 +115,7 @@ public class ServerHandler implements Runnable{
             }
 
             out.write(buffer, 0, bytesRead);
+            out.flush();
         }
 
         out.flush();
@@ -136,7 +137,9 @@ public class ServerHandler implements Runnable{
         length = in.readLong();
 
         // 拼接文件储存路径
-        filePath = "Server\\Storage\\" + subPath;
+        //filePath = "Server\\Storage\\" + subPath;
+
+        filePath = "Server\\Resources\\" + subPath;
 
         File file = new File(filePath);
         File directory = file.getParentFile();
@@ -185,6 +188,9 @@ public class ServerHandler implements Runnable{
             fileOutputStream.flush();
             count += bytesRead;
         }
+
+        fileOutputStream.flush();
+        fileOutputStream.close();
 
         // 已经上传完毕 再给Stop信息
         out.writeUTF("__finish__");

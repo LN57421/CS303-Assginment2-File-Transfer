@@ -84,7 +84,7 @@ public class DownloadTask implements Runnable{
                     out.flush();
                     // 删除掉本地的绝对路径对应文件
                     fileOutputStream.close();
-                    Files.delete(Path.of(filePath));
+                    Files.delete(Path.of("C:\\Users\\nian5\\Desktop\\JAVA2\\Final\\"  + filePath));
                     return;
                 }
 
@@ -103,6 +103,9 @@ public class DownloadTask implements Runnable{
             // 设置状态为完成
             this.status = Status.Finish;
             System.out.println("File received: " + filePath);
+
+            fileOutputStream.flush();
+            fileOutputStream.close();
 
             //4. 发送接收完毕的消息
             out.writeUTF("__finish__");
